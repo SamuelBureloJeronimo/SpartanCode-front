@@ -1,0 +1,44 @@
+.formClass {
+  padding: 1%;
+  align-content: center;
+  width: 600px;
+  border-radius: 5px;
+  border: solid 1px black;
+  background-color: white;
+}
+.title {
+  width: 100%;
+  font-size: 24px;
+  margin: 10px;
+}
+
+.divCreateAdd {
+  display: flex;
+  padding: 1%;
+  width: 100%;
+  justify-content: center;
+}
+
+.tableForm tr {
+  display: inline-table;
+}
+.tableForm tr td{
+  padding: 10px;
+  justify-content: center;
+}
+
+.btnSubmit {
+  margin: 5px;
+  color: black;
+  background-color: aquamarine;
+}
+
+.estado {
+  border-style: dotted;
+}
+
+.coloniasSelect {
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+}

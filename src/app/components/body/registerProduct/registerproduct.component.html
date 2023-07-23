@@ -1,0 +1,72 @@
+<div class="bodyStyle">
+  <div class="divRegisterProduct">
+    <form class="row g-3" #Product="ngForm" (ngSubmit)="this.sendData(Product)">
+        <h2 class="text-center" [ngStyle]="{'text-transform':'uppercase'}">{{this.getTitle()}}</h2>
+        <p class="text-center"> {{this.getSubTitle()}} </p>
+        <hr>
+        <div class="col-md-6">
+            <label for="nick" class="form-label">Nombre</label>
+            <small class="invalid-feedback d-block" *ngIf="!this.nombre.valid && this.nombre.touched">
+              *El campo es requerido
+            </small>
+            <input type="text" name="nombre" class="form-control" required="" #nombre="ngModel" [(ngModel)]="this.product.nombre">
+        </div>
+        <div class="col-md-6">
+            <label for="marca" class="form-label">Marca</label>
+            <small class="invalid-feedback d-block" *ngIf="!this.Marca.valid && this.Marca.touched">
+              *El campo es requerido
+            </small>
+            <select id="brands" name="marca" class="form-control" required="" list="brands" #Marca="ngModel" [(ngModel)]="this.product.marca._id">
+                <option value="{{ brand._id }}" *ngFor="let brand of brands">{{this.brand.nombre}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="modelo" class="form-label">Modelo</label>
+            <small class="invalid-feedback d-block" *ngIf="!this.Modelo.valid && this.Modelo.touched">
+              *El campo es requerido
+            </small>
+            <input type="text" name="modelo" class="form-control" required="" #Modelo="ngModel" [(ngModel)]="this.product.modelo">
+        </div>
+        <div class="col-md-6">
+            <label for="descriptcion" class="form-label">Descripcion</label>
+            <small class="invalid-feedback d-block" *ngIf="!this.Descripcion.valid && this.Descripcion.touched">
+              *El campo es requerido
+            </small>
+            <textarea type="description" name="descripcion" class="form-control" required="" placeholder="Ingrese la descripcion aqui" #Descripcion="ngModel" [(ngModel)]="this.product.descripcion"></textarea>
+        </div>
+        <div class="col-md-6">
+            <label for="categoria" class="form-label">Categoria</label>
+            <small class="invalid-feedback d-block" *ngIf="!this.Categoria.valid && this.Categoria.touched">
+              *El campo es requerido
+            </small>
+            <select name="categoria" class="form-control" required="" #Categoria="ngModel" [(ngModel)]="this.product.categoria._id">
+                <option value="{{ category._id }}" *ngFor="let category of categories">{{this.category.nombre}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="foto" class="form-label">Foto</label>
+            <small class="invalid-feedback d-block" *ngIf="!this.Imagen.valid && this.Imagen.touched">
+              *El campo es requerido
+            </small>
+            <input type="file" name="imagen" (change)="uploadImage($event)" class="form-control" required="" #Imagen="ngModel" [(ngModel)]="this.product.imagen">
+        </div>
+        <div class="col-md-6">
+          <label for="precio" class="form-label">Precio</label>
+          <small class="invalid-feedback d-block" *ngIf="!this.Precio.valid && this.Precio.touched">
+            *El campo es requerido
+          </small>
+          <input type="number" name="precio" class="form-control" required="" value="$" #Precio="ngModel" [(ngModel)]="this.product.precio">
+        </div>
+        <div class="col-md-6">
+          <label for="cantidad" class="form-label">Cantidad</label>
+          <small class="invalid-feedback d-block" *ngIf="!this.Cantidad.valid && this.Cantidad.touched">
+            *El campo es requerido
+          </small>
+          <input type="number" name="cantidad" class="form-control" required="" value="$" #Cantidad="ngModel" [(ngModel)]="this.product.cantidad">
+        </div>
+        <div class="col-md-6">
+              <input type="submit" class="btn btn-primary" [disabled]="" value="Registrar">
+          </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="divCreateAccount">
+  <form #RegisterUser="ngForm" (ngSubmit)="onSubmit(RegisterUser)" class="row g-3">
+    <h2 class="text-center" [ngStyle]="{'text-transform':'uppercase'}">{{ this.getTitle() }}</h2>
+    <p class="text-center">{{ this.getMessageText() }} <a [ngStyle]="{'text-decoration':'none','color':'#000'}" routerLink="/login">Login</a></p>
+    <hr>
+    <div class="col-md-6">
+      <label for="nick" class="form-label">{{ this.getNick() }}</label>
+      <small *ngIf="!this.nick.valid && this.nick.touched" class="invalid-feedback d-block">
+        *El campo es requerido
+      </small>
+      <input type="text" name="nick" #nick="ngModel" [(ngModel)]="this.user.nick" class="form-control" required="">
+    </div>
+    <div class="col-md-6">
+      <label for="nombre" class="form-label">{{ this.getNombre() }}</label>
+      <small *ngIf="!this.nombre.valid && this.nombre.touched" class="invalid-feedback d-block">
+        *El campo es requerido
+      </small>
+      <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="this.user.nombre" class="form-control" required="">
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">{{ this.getCorreo() }}</label>
+      <small *ngIf="!this.correo_electronico.valid && this.correo_electronico.touched" class="invalid-feedback d-block">
+        *El campo es requerido
+      </small>
+      <input type="email" name="correo_electronico" #correo_electronico="ngModel" [(ngModel)]="this.user.correo_electronico" class="form-control" required="">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">{{ this.getPassword() }}</label>
+      <small *ngIf="!this.password.valid && this.password.touched" class="invalid-feedback d-block">
+        *El campo es requerido
+      </small>
+      <input type="password" name="password" #password="ngModel" [(ngModel)]="this.user.password" class="form-control" required="">
+    </div>
+    <div class="col-md-6">
+      <label for="imagen">{{ this.getImagen() }}</label>
+      <!--
+      <div *ngIf="this.isExist && this.user.imagen">
+        <img class="rounded mx-auto d-block " width="150px" height="150px" src="{{ this.url+'api/'+this.user.imagen }}" alt="user">
+      </div>
+    -->
+    
+      <small *ngIf="!this.imagen.valid && this.imagen.touched" class="invalid-feedback d-block">
+        *El campo es requerido
+      </small>
+      <input type="file" class="form-control" name="imagen" #imagen="ngModel" [(ngModel)]="this.user.imagen" required="" (change)="getFile($event)" >
+    </div>
+    <div class="col-md-6">
+      <label for="fechana" class="form-label">{{ this.getFechaN() }}</label>
+      <small *ngIf="!this.fecha_nacimiento.valid && this.fecha_nacimiento.touched" class="invalid-feedback d-block">
+        *El campo es requerido
+      </small>
+      <input type="date" class="form-control" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="this.user.fecha_nacimiento" value="2018-07-22" min="2018-01-01" max="2080-12-31" required="">
+    </div>
+    <div class="col-md-6">
+      <label for="sex" class="form-label">{{ this.getSex() }}</label>
+      <input type="text" class="form-control" name="sexo" #sexo="ngModel" [(ngModel)]="this.user.sexo">
+    </div>
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-primary" [disabled]="this.RegisterUser.invalid">Registrar</button>
+    </div>
+  </form>
+</div>

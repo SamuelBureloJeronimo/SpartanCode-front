@@ -1,0 +1,49 @@
+<div class="bodyStyle">
+    <div class="row">
+        <div class="col-lg-6">
+            <form #registerBrand="ngForm" (ngSubmit)="this.onSubmit(this.registerBrand)" class="brand">
+                <h2 class="text-center" [ngStyle]="{'text-transform':'uppercase'}">{{ this.getTitle() }}</h2>
+                <hr>
+                <div class="form-group">
+                    <label for="nombre" class="form-label">{{ this.getNombre() }}</label>
+                    <small *ngIf="!this.nombre.valid && this.nombre.touched" class="invalid-feedback d-block">
+                        *El campo es requerido
+                    </small>
+                    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="this.brand.nombre" required="" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="imagen" class="form-label mt-2">{{ this.getImagen() }}</label>
+                    <small *ngIf="!this.logo.valid && this.logo.touched" class="invalid-feedback d-block">
+                        *El campo es requerido
+                    </small>
+                    <input type="file" class="form-control" name="logo" #logo="ngModel" [(ngModel)]="this.brand.logo" required="" (change)="getFile($event)">
+                </div>
+                <input type="submit" class="btn btn-primary mt-3" value="Registrar" [disabled]="this.registerBrand.invalid">
+            </form>
+        </div>
+        <div class="col-lg-6 brandsRequest">
+            <h2 class="text-center" [ngStyle]="{'text-transform':'uppercase'}">{{ this.getPage() }}</h2>
+                <table class="table table-hover text-center">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Logo</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let marca of brandArray">
+                            <td id="tdName"><div>{{ marca.nombre }}</div></td>
+                            <td>
+                                <div class='imgC'><div class='img-container'><img src="{{this.url+'api/'+marca.logo}}" alt='Imagen de producto'></div></div>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning" [routerLink]="['/brand-edit',marca._id]"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btn btn-danger" (click)="this.deleteBrand(marca._id)"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.divP {
+text-align: center;
+padding: 20px;
+}
+.divCreateAccount {
+    margin: 0px auto;
+    padding: 2%;
+    width: 400px;
+    border: solid 1px rgb(0, 0, 0);
+    border-radius: 15px;
+    background-color: white;
+}
+.lblError{
+    color: brown;
+    font-size: 14px;
+    font-style: italic;
+}

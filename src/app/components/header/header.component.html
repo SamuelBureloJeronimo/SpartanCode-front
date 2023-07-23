@@ -1,0 +1,83 @@
+<header class="head">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="divNav">
+      <a class="navbar-brand imgLogo" href=""><img style="margin-left: 20px;" src="../../../assets/L_P3_White.png" width="100px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+        aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="text-align: left; font-size: 12px;">
+              <label *ngIf="this.userAddresses != null && this.userAddresses.length > 0">
+                    Enviar a <br/> CP {{this.userAddresses[0].cp}}
+              </label>
+              <label *ngIf="this.userAddresses == null || this.userAddresses.length == 0">
+                    ¡Hola! <br/> Ingresa tu dirección
+              </label>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" [routerLink]="['/register-address']">Agregar nueva dirección</a></li>
+              <li><a class="dropdown-item" href="">Elegir una dirección</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="divSearch">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" [ngClass]="{'loading':this.isLoading}" [spellcheck]="false" (ngModelChange)="this.SearchName($event)" name="nombre" #nombre="ngModel" [(ngModel)]="this.product.nombre" placeholder="Buscar productos..." aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+     
+      <div class="divNavRight">
+        <ul class="navbar-nav" [hidden]="isHiddenDefault">
+          <li class="nav-item dropdown">
+            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+              style="text-align: left; font-size: 12px;">
+              ¡Bienvenido! Identificate
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" [routerLink]="['/login']">Iniciar sesión</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/register-user']">Crear cuenta</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav" [hidden]="isHiddenNickUser">
+          <li class="nav-item dropdown">
+            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+              style="font-size: 14px;">
+              {{this.dataToken.nick}}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" style="text-align: center;">
+              <div [hidden]="isUser" class="modeAdmin">
+                <h6>Admin mode</h6>
+                <li><a class="dropdown-item" [routerLink]="['/register-product']">Registrar producto</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/category']">Crear categoria</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/register-brand']">Registrar nueva marca</a></li>
+                <hr>
+              </div>
+              <li><a class="dropdown-item" [routerLink]="['/sales']">Compras</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/my-profile']">Mi perfil</a></li>
+              <li><a class="dropdown-item" (click)="logOut()">Salir</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="notifiation">
+          <a class="btnCarr" [routerLink]="['/carrito']"><label class="not">{{carr.length}}</label></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="Name" [hidden]="this.isHiddenSH">
+    <ul>
+      <li *ngFor="let dato of data">
+        <a class="refProduct" (click)="this.noneDisplay(dato)">
+        {{ dato.nombre }} <!--<img class="rounded mx-auto d-block imagen" width="70px" height="70px" src="{{ this.url+'api/'+dato.imagen }}" alt="produto">-->
+        <hr>
+      </a>
+      </li>
+    </ul>
+  </div> 
+</header>

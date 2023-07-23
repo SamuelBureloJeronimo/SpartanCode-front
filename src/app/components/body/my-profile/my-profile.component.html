@@ -1,0 +1,39 @@
+<div class="bodyStyle">
+    <div class="bodyModal">
+        <div class="userDescrip">
+            <div class="photoProfile">
+                <div class="edithPhoto">
+                    <input type="file" id="imgUser" (change)="changeIMG($event)" hidden>
+                    <button class="btnEdit" (click)="updateIMG()"><img src="../../../../assets/editar.png" height="20px"></button>
+                </div>
+                <div class='imgC'><div class='img-container'><img src='{{user.imagen}}' alt='Imagen de producto'></div></div>
+            </div>
+            <div class="infoUser">
+                <h2>{{user.nombre}}</h2>
+                <h5>@{{user.nick}}</h5>
+                <hr>
+                <h4>Correo: {{user.correo_electronico}}</h4>
+                <h4>Fecha de nacimiento: {{user.fecha_nacimiento}}</h4>
+                <h4>Sexo: {{user.sexo}}</h4>
+            </div>
+            <div class="infoUser dataUpdate" id="dataUpdate" hidden>
+                <input type="text" class="form-control" [(ngModel)]="user.nombre">
+                <div style="display: flex; margin: 10px; align-items: center;"><h5>@</h5><input type="text" class="form-control" [(ngModel)]="user.nick"></div>
+                <hr>
+                <h4>Correo: </h4><input type="email" class="form-control" [(ngModel)]="user.correo_electronico">
+                <h4>Fecha de nacimiento: </h4><input type="datetime" class="form-control" [(ngModel)]="user.fecha_nacimiento">
+                <h4>Sexo: </h4>
+                <select class="form-select" name="" id="" [(ngModel)]="user.sexo">
+                    <option value="Hombre">Maculino</option>
+                    <option value="Mujer">Femenino</option>
+                </select>
+            </div>
+            <div class="edithPhoto">
+                <button class="btnEdit" (click)="hideChangeUser()"><img src="../../../../assets/editar.png" height="20px"></button>
+            </div>
+        </div>
+        <div class="updateBtn">
+            <button class="btn btn-success" (click)="updateUser()">Actualizar</button>
+        </div>
+    </div>
+</div>

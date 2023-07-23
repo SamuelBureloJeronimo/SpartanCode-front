@@ -1,0 +1,74 @@
+<div class="bodyStyle">
+  <form class="formClass" (submit)="createAddress()">
+    <table class="tableForm">
+      <!-- DATOS IMPORTANTES A RELLENAR -->
+      <div>
+      <tr>
+        <td>
+          <div class="mb-3">
+            <label  class="form-label">Nombre y apellidos</label>
+            <input type="text" class="form-control" name="nombreRef" [(ngModel)]="this.addressData.nombreRef">
+            <div id="emailHelp" class="form-text">Tal como figure en su INE.</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="form-label">Estado</label>
+          <input type="text" class="form-control estado" name="estado" [(ngModel)]="this.addressData.estado">
+        </td>
+        <td>
+          <label class="form-label">Municipio</label>
+          <input type="text" class="form-control estado" name="municipio" [(ngModel)]="this.addressData.municipio">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label class="form-label">Colonia</label><br>
+          <input type="text" class="form-control estado" name="colonia" [(ngModel)]="this.addressData.colonia">
+        </td>
+        <td>
+          <label class="form-label">Calle</label>
+          <input type="text" class="form-control" name="calle" [(ngModel)]="this.addressData.calle">
+        </td>
+      </tr>
+        <tr>
+          <td>
+            <label class="form-label">Nº Exterior (opcional)</label>
+            <input type="number" class="form-control" name="nExterior" [(ngModel)]="this.addressData.nExterior">
+          </td>
+          <td>
+            <label class="form-label">Nº interior/Depto (opcional)</label>
+            <input type="number" class="form-control" name="nInterior" [(ngModel)]="this.addressData.nInterior">
+          </td>
+        </tr>
+        <tr><td><label for="">¿Entre qué calles está?</label></td></tr>
+        <tr>
+          <td>
+            <label class="form-label">Calle 1</label>
+            <input type="text" class="form-control" name="calleRef1" [(ngModel)]="this.addressData.calleRef1">
+          </td>
+          <td>
+            <label class="form-label">Calle 2</label>
+            <input type="text" class="form-control" name="calleRef2" [(ngModel)]="this.addressData.calleRef2">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label">Teléfono de contacto</label>
+            <input type="number" class="form-control" name="Tel" [(ngModel)]="this.addressData.Tel">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="form-label">Indicaciones adicionales sobre esta dirección</label><br>
+            <textarea name="" id="" cols="50" rows="5" name="descripcionDomicilio" [(ngModel)]="this.addressData.descripcionDomicilio"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <button type="submit" class="btn btn-primary btnSubmit">Guardar direccion</button>
+        </tr>
+      </div>
+    </table>
+  </form>
+</div>

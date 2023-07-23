@@ -1,0 +1,9 @@
+.divCreateAccount {
+    margin: 2%;
+    margin-left: 25%;
+    margin-right: 55%;
+    padding: 2%;
+    width: 800px;
+    /*height: 565px;*/
+    border: solid 1px black;
+}

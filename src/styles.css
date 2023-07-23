@@ -1,0 +1,12 @@
+.bodyStyle {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin-top: 82px;
+    background-color: #e1e1e1;
+    background-size: 100%;
+    padding: 30px;
+    align-items: center;
+}

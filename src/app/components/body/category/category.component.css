@@ -1,0 +1,13 @@
+.category{
+    padding: 2%;
+    width: 500px;
+    border: 1px solid rgb(112, 112, 112);
+    background-color: white;
+    border-radius: 10px 30px;
+    box-shadow: 0 4px 8px rgba(22, 0, 29, 0.2);
+}
+.listCategories {
+    border-radius: 10px;
+    margin-left: 20px;
+    overflow: scroll;
+}

@@ -1,0 +1,95 @@
+<div class="bodyStyle">
+    <div class="container">
+        <!-- Left container -->
+        <div class="contentLeft">
+            <!-- ADMIN MODE -->
+            <div class="divEdith" [hidden]="this.isHiddenAdminMode" hidden>
+                <div style="width: 100%;"><button class="btn btn-danger" type="button" style="margin-right: 25%;" (click)="deleteProduct()">Eliminar</button></div>
+                <button class="btnEdit" (click)="updateIMG()"><img src="../../../../assets/editar.png" height="20px"></button>
+            </div>
+            <!-- -- -- -- -->
+            <input type="file" name="imagen" id="nameProduct" (change)="changeImage($event)" class="form-control" hidden>
+            <div class='img-container'><img src='{{this.product.imagen}}'></div>
+            <hr>
+            <div class="divEdith" [hidden]="this.isHiddenAdminMode" hidden style="margin-top: 0px;">
+                <button (click)="edithDescrip()" class="btnEdit"><img src="../../../../assets/editar.png" height="20px"></button>
+            </div>
+            <h4>Descripción del producto</h4>
+            <p class="pDescrip" id="pDescrip">{{ this.product.descripcion }}</p>
+            <textarea hidden class="taDescrip pDescrip" id="edithDescrip" [(ngModel)]="this.product.descripcion"></textarea>
+        </div>
+        <!-- Right container -->
+        <div class="contentRight">
+            <!-- Relevant product info -->
+            <div class="divInfoProduct" id="divInfoProduct">
+                <!-- ADMIN MODE -->
+                <div class="infoProduct" id="edithInfoProduct" style="display: none; width: 320px; background-color: rgb(23, 3, 42); color: white; margin-left: -320px;">
+                    <form>
+                        <label for="nick" class="form-label">Nombre</label>
+                        <textarea type="text" name="nombre" class="form-control taED_Name" required="" #nombre="ngModel" [(ngModel)]="this.product.nombre" placeholder="Nombre del producto..."></textarea>
+                        <label for="nick" class="form-label">Precio</label>
+                        <input type="number" name="precio" class="form-control hPrecio taED_Pre" required="" #precio="ngModel" [(ngModel)]="this.product.precio" placeholder="$">
+                        <label for="nick" class="form-label">Cantidad</label>
+                        <input type="number" name="cantidad" class="form-control" required="" #cantidad="ngModel" [(ngModel)]="this.product.cantidad">
+                        <label for="categoria" class="form-label">Categoria</label>
+                        <small class="invalid-feedback d-block" *ngIf="!this.Categoria.valid && this.Categoria.touched">
+                        *El campo es requerido
+                        </small>
+                        <select name="categoria" class="form-control" required="" #Categoria="ngModel" [(ngModel)]="this.product.categoria._id">
+                            <option value="{{ this.category._id }}" *ngFor="let category of categories">{{this.category.nombre}}</option>
+                        </select>
+                        <label for="marca" class="form-label">Marca</label>
+                        <small class="invalid-feedback d-block" *ngIf="!this.Marca.valid && this.Marca.touched">
+                        *El campo es requerido
+                        </small>
+                        <select id="brands" name="marca" class="form-control" required="" list="brands" #Marca="ngModel" [(ngModel)]="this.product.marca._id">
+                            <option value="{{ this.brand._id }}" *ngFor="let brand of brands">{{this.brand.nombre}}</option>
+                        </select>
+                        <label for="Modelo" class="form-label">Modelo</label>
+                        <input type="text" name="modelo" class="form-control" required="" #Modelo="ngModel" [(ngModel)]="this.product.modelo">
+                        <div style="display: flex; justify-content: center;"><button class="btnDesing comprarNow" style="margin: 15px; width: 50%;" (click)="saveChanges()">Actualizar</button></div>
+                    </form>
+                </div>
+                <!-- -- -- -- -->
+                <div class="infoProduct" style="width: 320px;">
+                    <div class="divEdith" [hidden]="this.isHiddenAdminMode" hidden>
+                        <button class="btnEdit" (click)="edithProduct();"><img src="../../../../assets/editar.png" height="20px"></button>
+                    </div>
+                    <h6 class="H6details">0 Vendidos</h6>
+                    <h5 class="hName">{{ this.product.nombre }}</h5>
+                    <h6 class="hAfterPrecio">${{ this.product.precio }}</h6>
+                    <div class="divPrecio">
+                        <h6 class="hPrecio">${{ this.product.precio }}</h6><h6 class="hDescuento">50% OFF</h6>
+                    </div>
+                    <div>
+                        <h3 [style]="{'font-size':'15px'}">Stock disponible</h3>
+                        <p>Cantidad: {{ this.product.cantidad }} unidad</p>
+                        <button class="btnDesing comprarNow">Comprar Ahora</button><br>
+                        <button class="btnDesing addCarr" (click)="addCarr()">Agregar al carrito</button>
+                        <p><span [style]="{'color':'#0063d3'}"> Devolución gratis.</span><span [style]="{'color':'gray'}"> 30 días desde que lo recibes.</span></p>
+                        <p><span [style]="{'color':'#0063d3'}"> Compra Protegida,</span><span [style]="{'color':'gray'}"> el producto que esperabas o te devolvemos tu dinero.</span></p>
+                        <p><span [style]="{'color':'#0063d3'}">Mercado Puntos.</span><span [style]="{'color':'gray'}"> Sumas 262 puntos</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="paymentsMethods">
+                <h2 [style]="{'font-size':'20px'}" class="text-center">Medios de Pago</h2>
+                <h2 [style]="{'font-size':'15px'}" class="text-center">Tarjetas de crédito</h2>
+                <p [style]="{'color':'gray'}">¡Paga en hasta 12 cuotas!</p>
+                <img class="p-2" src="../../../assets/visa.svg" alt="visa">
+                <img class="p-2" src="../../../assets/americanexpress.svg" alt="americanexpress">
+                <img class="p-2" src="../../../assets/doscirculos.svg" alt="circulos">
+                <h2 [style]="{'font-size':'15px'}" class="text-center mt-4">Tarjetas de debito</h2>
+                <img class="p-2" src="../../../assets/visadebito.svg" alt="visadebito">
+                <img class="p-2" src="../../../assets/sivale.svg" alt="sivale">
+                <img class="p-2" src="../../../assets/edenred.svg" alt="endered">
+                <img class="p-2" src="../../../assets/doscirculosdebito.svg" alt="doscirculosdebito">
+                <h2 [style]="{'font-size':'15px'}" class="text-center mt-4">Efectivo</h2>
+                <img class="p-2" src="../../../assets/oxxo.svg" alt="oxxo">
+                <img class="p-2" src="../../../assets/paycash.svg" alt="paycash">
+                <p [style]="{'color':'#0063d3'}">Conoce otros medios de pago</p>
+            </div>
+        </div>
+    </div>
+</div>

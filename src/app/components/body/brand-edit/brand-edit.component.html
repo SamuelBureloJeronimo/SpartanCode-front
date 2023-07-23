@@ -1,0 +1,30 @@
+<div class="bodyStyle">
+    <form #updateBrand="ngForm" (ngSubmit)="this.onSubmit(this.updateBrand)" class="brand">
+        <h2 class="text-center" [ngStyle]="{'text-transform':'uppercase'}">{{ this.getTitle() }}</h2>
+        <hr>
+        <div class="form-group">
+            <label for="nombre" class="form-label">{{ this.getNombre() }}</label>
+            <small *ngIf="!this.nombre.valid && this.nombre.touched" class="invalid-feedback d-block">
+                *El campo es requerido
+            </small>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="this.brand.nombre" required="" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="imagen" class="form-label mt-2">{{ this.getImagen() }}</label>
+            <small *ngIf="!this.logo.valid && this.logo.touched" class="invalid-feedback d-block">
+                *El campo es requerido
+            </small>
+            <input type="file" class="form-control" name="logo" #logo="ngModel" [(ngModel)]="this.brand.logo" required="" (change)="getFile($event)">
+<<<<<<< HEAD
+            <div *ngIf="this.isExist && this.brand.logo">
+                <div class='imgC'><div class='img-container'><img src='{{this.brand.logo}}' alt='Imagen de producto'></div></div>
+            </div>
+=======
+            <!--<div *ngIf="this.isExist && this.brand.logo">
+                <img class="rounded mx-auto d-block " width="150px" height="150px" src="{{ this.url+'api/'+this.brand.logo }}" alt="brand">
+            </div>-->
+>>>>>>> d5f258d525e75b0ea2dd76ed03299d4bcd71e6ec
+        </div>
+        <input type="submit" class="btn btn-primary mt-3" value="Actualizar" [disabled]="this.updateBrand.invalid">
+    </form>
+</div>

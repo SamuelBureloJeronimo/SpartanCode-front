@@ -1,0 +1,21 @@
+<div class="bodyStyle">
+  <div class="divCreateAccount">
+    <h2 style="text-align: center;">Iniciar sesión</h2>
+    <form (submit)="login()">
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label><br/>
+        <label class="lblError" [hidden]="isErrorEmailHidden">{{lblErr_Email}}</label>
+        <input type="email" [(ngModel)]="emailValue" class="form-control" name="inputEmail3" (keyup)="Email_Validate()">
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label><br/>
+        <label class="lblError" [hidden]="isErrorPassHidden">{{lblErr_Pass}}</label>
+        <input type="password" [(ngModel)]="passValue" class="form-control" name="inputPassword3" (keyup)="Pass_Validate()">
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="isBtnLoginDisabled">Iniciar sesión</button>
+      <a class="btn btn-outline-secondary" style="margin-left: 8px;" routerLink="/register-user">Crear cuenta</a>
+      <br/><br/>
+      <p style="text-align: center;">¿Has olvidado tu Contraseña? <br/> <a href="">Haz click aqui</a></p>
+    </form>
+  </div>
+</div>

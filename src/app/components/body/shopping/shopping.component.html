@@ -1,0 +1,93 @@
+<div class="bodyStyle" *ngIf="tabNumber == 0">
+    <div class="divP">
+        <h3>Elige una direccion de entrega</h3><br>
+        <div class="dirP">
+            <div style="padding: 15px;">
+                <h5>Envio a domicilio</h5>
+                <h6 class="hRef">{{addressP.colonia}}  -  {{addressP.municipio}} / {{addressP.estado}}</h6>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 220px; color: green; padding: 10px; margin-left: 15px;">
+                <h6>Envio Gratis</h6>
+            </div>
+        </div>
+        <div style="display: flex; padding: 15px;">
+            <div style="width: 100%;  justify-content: left;">
+                <button class="btn btn-info">Cambiar direccion</button>
+            </div>
+            <div style="display: flex; width: 100%;  justify-content: right;">
+                <button class="btn btn-primary" (click)="continue(1)">Continuar</button>
+            </div>
+        </div>
+    </div>
+    <div style="height: 300px; background-color: rgb(238, 238, 238); padding: 15px; border-radius: 8px;">
+        <h4>Resumen de compra</h4>
+        <hr>
+        <div style="display: flex; align-items: center; padding: 5px;">
+            <h6 style="margin-right: 15px;">Productos ({{cart.length}}): </h6><h5>$ {{precioTotal}}</h5>
+        </div>
+        <div style="display: flex; align-items: center; padding: 5px;">
+            <h6 style="margin-right: 15px;">Envio: </h6>
+            <h5 class="hPrecio" *ngIf="precioTotal>=400">Gratis</h5>
+            <h5 class="hPrecio" *ngIf="precioTotal<400">$200</h5>
+        </div>
+        <div style="display: flex; align-items: center; padding: 5px;">
+            <h6 style="margin-right: 15px;">Precio total: </h6><h5>$ {{precioTotal}}</h5>
+        </div>
+    </div>
+</div>
+<div class="bodyStyle" *ngIf="tabNumber == 1">
+    <div class="divP">
+        <h3>Método de pago</h3>
+        <div class="dirP" style="display: inline-block; padding: 15px;">
+            <label>Número de tarjeta</label>
+            <input class="form-control" type="text" placeholder="**** **** **** ****" style="width: 230px;" maxlength="19" (keyup)="verificCardNumber()" [(ngModel)]="this.payment.card">
+            <label>Titular</label>
+            <input class="form-control" type="text" placeholder="Nombre completo" style="width: 380px;" maxlength="48" (keyup)="verificName()" [(ngModel)]="this.payment.owner" (input)="onInputChange($event)">
+
+            <label>Fecha de vencimiento</label>
+            <input class="form-control" type="text" placeholder="MM/AA" style="width: 100px;" maxlength="5" (keyup)="verificData()" [(ngModel)]="this.payment.expirationData">
+            <label>Código de seguridad</label>
+            <input class="form-control" type="text" placeholder="***" style="width: 80px;" maxlength="3" (keyup)="verificCode()" [(ngModel)]="this.payment.securityCode">
+            <button class="btn btn-info" style="margin-right: 180px;" (click)="continue(0)">Atrás</button>
+            <button class="btn btn-primary" (click)="continue(2)" [disabled]="disableContinue">Continuar</button>
+        </div>
+    </div>
+</div>
+<div class="bodyStyle" *ngIf="tabNumber == 2">
+    <div class="confirm">
+        <div style="display: flex; justify-content: center;"><h4>Confirma tu compra</h4></div>
+        <hr>
+        <div style="display: flex; text-align: center;">
+            <div style="height: 100%; padding: 10px;;">
+                <div class='imgC'><div class='img-container'><img src="../../../../assets/tarjeta-bancaria.png" alt='Imagen de producto'></div></div>
+                <h5>.</h5>
+                <div class='imgC'><div class='img-container'><img src="../../../../assets//camion-de-reparto.png" alt='Imagen de producto'></div></div>
+                <h5>.</h5>
+                <div class='imgC'><div class='img-container'><img src="../../../../assets/repartidor.png" alt='Imagen de producto'></div></div>
+            </div>
+            <div style="padding-left: 15px; padding-top: 15px; width: 100%;">
+                <div style="text-align: left; width: 100%;">
+                    Método de pago
+                    <div style="color: brown; font-weight: bold;">MasterCard: **** {{payment.card.substring(15,19)}}</div>
+                </div>
+                <hr>
+                <div style="text-align: left; width: 100%;">
+                    Envio
+                    <div style="color: green; font-weight: bold;"><div *ngIf="precioTotal > 400">Gratis</div><div *ngIf="precioTotal <= 400">$189.00</div></div>
+                </div>
+                <hr>
+                <div style="text-align: left; width: 100%;">
+                    Direccion de envio
+                    <div style="font-weight: bold;">{{addressP.cp}} - {{addressP.municipio}}/{{addressP.estado}}</div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div style="display: flex; justify-content: center;">
+            <h5 style="color: rgb(0, 0, 0);">Monto total:</h5><h5 style="color: green; margin-left: 15px;">{{precioTotal | currency}}</h5>
+        </div>
+        <div style="display: flex; width: 100%; justify-content: center; padding-top: 20px;">
+            <button class="btn btn-success">Confirmar compra</button>
+        </div>
+    </div>
+</div>

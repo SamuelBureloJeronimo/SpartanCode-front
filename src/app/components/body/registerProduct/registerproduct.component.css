@@ -1,0 +1,12 @@
+.divRegisterProduct {
+    padding: 2%;
+    width: 800px;
+    border: 1px solid rgb(112, 112, 112);
+    background-color: white;
+    border-radius: 10px 50px;
+    box-shadow: 0 4px 8px rgba(22, 0, 29, 0.2);
+}
+
+.btn{
+    margin-top: 20px;
+}

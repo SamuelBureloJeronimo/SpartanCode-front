@@ -1,0 +1,146 @@
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #8e8e8e;
+  transition: color .15s ease-in-out;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+  
+  
+.product-device {
+  position: absolute;
+  right: 10%;
+  bottom: -30%;
+  width: 300px;
+  height: 540px;
+  background-color: #333;
+  border-radius: 21px;
+  transform: rotate(30deg);
+}
+
+.product-device::before {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  bottom: 10%;
+  left: 10px;
+  content: "";
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 5px;
+}
+.img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-device-2 {
+  top: -25%;
+  right: auto;
+  bottom: 0;
+  left: 5%;
+  background-color: #e5e5e5;
+}
+  
+  
+  /*
+   * Extra utilities
+   */
+  
+  .flex-equal > * {
+    flex: 1;
+  }
+
+
+  .bodySlide {
+    margin: 1%;
+  }
+  .bodySlide #slide {
+    height: 10%;
+  }
+  .bodySlide #slide img{
+    height: 10%;
+  }
+
+  .btnClick {
+    background-color: transparent;
+    border: none;
+  }
+
+  .btnClick img {
+    display: flex;
+    justify-content: center;
+    height: 55px;
+    width: 55px;
+  }  
+   
+/********************* Samy-develop ****************************/
+
+.listProducts {
+  display: flex;
+  justify-content:center;
+  width: 100%;
+  height: 285px;
+}
+.linkA {
+  text-decoration: none;
+}
+.img-container {
+  display: flex;
+  width: 170px;
+  height: 170px;
+  align-items: center;
+  justify-content: center;
+}
+.img-container img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.imgC {
+  width: 100%;
+  height: 185px;
+}
+
+.pInfo {
+  padding: 5px;
+  margin-top: 5px;
+  height: 150px;
+  overflow: hidden;
+}
+
+.product {
+  height: 270px;
+  width: min-content;
+  transition: transform .2s;
+  overflow: hidden;
+}
+
+.hNombre {
+  font-size: 14px;
+  color: #676767;
+  width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hPrecio {
+  color: green; font-size: 20px;
+}
+.hEnvio {
+  color: green; font-size: 13px;
+}
+
+.product:hover {
+  -ms-transform: scale(4.6);
+  /* IE 9 */
+  -webkit-transform: scale(1.5);
+  /* Safari 3-8 */
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Definición del sombreado */
+  height: 337px;
+}

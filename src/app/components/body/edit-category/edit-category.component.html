@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <form #updatedCategory="ngForm" (ngSubmit)="this.onSubmit(updatedCategory)" class="category">
+        <h2 class="text-center" [ngStyle]="{'text-transform':'uppercase'}">{{ this.getTitle() }}</h2>
+        <hr>
+        <div class="form-group">
+            <label for="nombre" class="form-label">{{ this.getNombre() }}</label>
+            <small *ngIf="!this.nombre.valid && this.nombre.touched" class="invalid-feedback d-block">
+                *El campo es requerido
+            </small>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="this.category.nombre" required="" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="descripcion" class="form-label mt-2">{{ this.getDescripcion() }}</label>
+            <small *ngIf="!this.descripcion.valid && this.descripcion.touched" class="invalid-feedback d-block">
+                *El campo es requerido
+            </small>
+            <textarea name="descripcion" #descripcion="ngModel" [(ngModel)]="this.category.descripcion" class="form-control" required="" cols="30" rows="10"></textarea>
+        </div>
+        <input type="submit" class="btn btn-primary mt-3" value="Actualizar" [disabled]="this.updatedCategory.invalid">
+    </form>
+</div>

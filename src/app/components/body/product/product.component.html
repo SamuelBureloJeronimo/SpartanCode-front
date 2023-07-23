@@ -1,0 +1,39 @@
+<div class="bodyStyle">
+  <div id="carouselExample" class="carousel slide bodySlide">
+    <div class="carousel-inner">
+      <div class="carousel-item active" id="slide">
+        <a href="#"><img src="../../../../assets/navIMG_1.jpg" class="d-block w-100"></a>
+      </div>
+      <div class="carousel-item" id="slide">
+        <a href="#"><img src="../../../../assets/navIMG_2.jpg" class="d-block w-100"></a>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <br>
+  <div class="listProducts">
+    <button class="btnLeft btnClick" (click)="fillData((this.pVuelta-2)*this.maxElemByRow, (this.pVuelta-1)*this.maxElemByRow, -1)"><img src="../../../../assets/proximoATRAS.png"></button>
+    <div style="display: flex; padding: 1%;">
+      <div *ngFor="let product of this.data">
+          <div class="card mx-3 p-3 product" (click)="clickProduct(product)">
+            <div class='imgC'><div class='img-container'><img src='{{this.url+"api/"+product.imagen}}' alt='Imagen de producto'></div></div>
+            <div class='pInfo'>
+              <h5 class='hPrecio'>${{product.precio}}</h5>
+              <div *ngIf="product.precio >= 400"><h5 class='hEnvio'>Envio gratis</h5></div>
+              <div *ngIf="product.precio < 400"><br/></div>
+              <h5 class='hNombre'>{{product.nombre}}</h5>
+            </div>
+          </div>
+      </div>
+    </div>
+    <button class="btnRight btnClick" (click)="fillData(this.pVuelta*this.maxElemByRow, (this.pVuelta+1)*this.maxElemByRow, 1)"><img src="../../../../assets/proximoADELANTE.png"></button>
+  </div>
+</div>

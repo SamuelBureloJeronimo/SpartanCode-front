@@ -1,0 +1,48 @@
+.color-text{
+    color: white;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size:smaller;
+}
+
+.color-text h6 {
+    font-size:larger;
+    line-height: 2;
+}
+
+.centrar{
+    display: flex;
+    justify-content: center;
+    padding: 3% 4%;
+    margin-top: 3%;
+    width: 100%;
+}
+
+.margenes{
+    padding: 0 4%;
+    padding-bottom: 18px;
+}
+
+.enlaces-footer{
+    text-decoration: none;
+    color: #d0d0d0;
+}
+
+.enlaces-footer:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+p{
+    line-height: 13px;
+}
+
+.p-footer{
+    display: flex;
+    justify-content: center;
+    margin: 5px 0px;
+    color: #d0d0d0;
+    font-size: smaller;
+}
+.divFooter {
+    width: 100%;
+}
