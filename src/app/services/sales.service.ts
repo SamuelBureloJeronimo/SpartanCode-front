@@ -10,10 +10,19 @@ import { Observable } from 'rxjs';
 export class SalesService {
 
   private url:string;
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.url = global.url;
   }
-  public getSales_User(): Observable<any>{
+  public create(formData: any): Observable<any>{
+    return this.http.post<any>(this.url+'api/create-sale', formData);
+  }
+  public getSales(): Observable<any>{
     return this.http.get<any>(this.url+'api/get-sales');
+  }
+  public changeStatus(idSale: string): Observable<any>{
+    return this.http.put<any>(this.url+'api/update-sale/'+idSale, "");
+  }
+  public getSalesById(idUser: string): Observable<any>{
+    return this.http.get<any>(this.url+'api/get-saleByUser/'+idUser);
   }
 }

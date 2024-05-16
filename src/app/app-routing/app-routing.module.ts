@@ -16,6 +16,7 @@ import { myProfileComponent } from '../components/body/my-profile/my-profile.com
 import { CartComponent } from '../components/body/cart/cart.component';
 import { ShoppingComponent } from '../components/body/shopping/shopping.component';
 import { SalesComponent } from '../components/body/sales/sales.component';
+import { VentasComponent } from '../components/body/ventas/ventas.component';
 
 const routes: Routes = [
   { path: 'home', component: ProductComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'my-profile',component: myProfileComponent },
   { path: 'carrito',component: CartComponent },
   { path: 'sales',component: SalesComponent },
+  { path: 'gestion-ventas',component: VentasComponent },
   { path: 'shopping-transaction',component: ShoppingComponent },
   { path: '**', component: ProductComponent }
 ];

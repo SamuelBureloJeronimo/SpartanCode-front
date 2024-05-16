@@ -1,0 +1,39 @@
+<div class="bodyStyle">
+  <h1 style="margin: 10px; font-weight: bold;">Ordenes de ventas</h1>
+  <div class="bodyModal">
+  <table class="table table-hover text-center">
+    <thead>
+      <tr>
+        <th scope="col">Fecha de compra</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Total</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Descargar etiqueta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of sales">
+        <td class="normalTD">{{ c.fecha | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+        <td><img src='{{this.url+c.articulo.imagen}}' height="150px"></td>
+        <td class="normalTD">{{ c.articulo.nombre }}</td>
+        <td class="normalTD">{{ c.cantidad }}</td>
+        <td class="peso">{{ c.total | currency:'MXN':'symbol':'1.2-2'}}</td>
+        <td class="enEspera" *ngIf="c.status == false">En espera de entrega</td>
+        <td class="entregado" *ngIf="c.status == true">Entregado</td>
+        <td class="normalTD"><button type="button" class="btn btn-info" (click)="generatePDF(c)">Descargar etiqueta</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<div class="container mt-5">
+  <div #content id="contentToConvert" class="p-3 mb-3" style="background: #f5f5f5; border: 1px solid #ccc;">
+    <h1>Title</h1>
+    <p>This is a paragraph of text that will be converted to PDF.</p>
+    <p>More content can go here...</p>
+    <!-- Puedes agregar más contenido HTML aquí -->
+  </div>
+</div>

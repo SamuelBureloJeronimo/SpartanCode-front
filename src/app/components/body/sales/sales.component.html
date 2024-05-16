@@ -1,22 +1,23 @@
 <div class="bodyStyle">
+  <div class="articulos" *ngFor="let i of compras">
     <div class="bodyP">
-        <h5>Compras</h5><hr>
-        <table class="table table-hover">
-            <tbody>
-                <tr class="rowCart">
-                    <td class="align-middle"><div class='imgC'><div class='img-container'><img alt='Imagen de producto'></div></div></td>
-                    <td class="align-middle"><a class="aLink">nombre</a></td>
-                    <td class="align-middle"><h6 class="hPrecio">$ 343</h6></td>
-                    <td class="align-middle">
-                        <div class="cantidad">
-                            <button class="btn btn-danger"><</button>
-                            1
-                            <button class="btn btn-success">></button>
-                        </div>
-                    </td>
-                    <td class="align-middle"><button class="btn btn-danger">Eliminar</button></td>
+      <h5>{{i.fecha | date: 'dd/MM/yyyy'}}</h5><hr>
+      <table class="table table-hover">
+          <tbody>
+              <tr class="rowCart">
+                  <td class=""><div class='imgC'><div class='img-container'><img src="{{this.url+i.articulo.imagen}}" width="80px" alt='Imagen de producto'></div></div></td>
+                  <td class="fixed-width"><a class="aLink" [routerLink]="['/product-detail/'+i.articulo._id]">{{i.articulo.nombre}}</a></td>
+                  <td class="EnEspera" *ngIf="i.status == true">
+                      Entregado
+                  </td>
+                  <td class="EnEspera" *ngIf="i.status == false">
+                    En camino...
+                  </td>
+                  <td *ngIf="i.status == false"><button type="button" class="btn btn-info" (click)="confirmarEntrega(i._id)">Confirmar entrega</button></td>
+                  <td *ngIf="i.status == true"><button type="button" class="btn btn-secondary" disabled>Entrega confirmada</button></td>
                 </tr>
-            </tbody>
-        </table>
+          </tbody>
+      </table>
     </div>
+  </div>
 </div>

@@ -7,10 +7,10 @@ import { global } from './global';
   providedIn: 'root'
 })
 
-export class userService 
+export class userService
 {
   public url:string;
-  constructor(private _http:HttpClient) { 
+  constructor(private _http:HttpClient) {
     this.url = global.url;
   }
 

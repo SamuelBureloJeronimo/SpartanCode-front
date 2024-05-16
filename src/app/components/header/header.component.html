@@ -30,7 +30,7 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
-     
+
       <div class="divNavRight">
         <ul class="navbar-nav" [hidden]="isHiddenDefault">
           <li class="nav-item dropdown">
@@ -53,9 +53,10 @@
             <ul class="dropdown-menu dropdown-menu-dark" style="text-align: center;">
               <div [hidden]="isUser" class="modeAdmin">
                 <h6>Admin mode</h6>
+                <li><a class="dropdown-item" [routerLink]="['/gestion-ventas']">Registro de ventas</a></li>
                 <li><a class="dropdown-item" [routerLink]="['/register-product']">Registrar producto</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/category']">Crear categoria</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/register-brand']">Registrar nueva marca</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/category']">Control de categorias</a></li>
+                <li><a class="dropdown-item" [routerLink]="['/register-brand']">Control de marcas</a></li>
                 <hr>
               </div>
               <li><a class="dropdown-item" [routerLink]="['/sales']">Compras</a></li>
@@ -79,5 +80,5 @@
       </a>
       </li>
     </ul>
-  </div> 
+  </div>
 </header>

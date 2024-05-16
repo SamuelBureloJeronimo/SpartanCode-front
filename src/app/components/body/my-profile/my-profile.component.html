@@ -13,7 +13,7 @@
                 <h5>@{{user.nick}}</h5>
                 <hr>
                 <h4>Correo: {{user.correo_electronico}}</h4>
-                <h4>Fecha de nacimiento: {{user.fecha_nacimiento}}</h4>
+                <h4>Fecha de nacimiento: {{user.fecha_nacimiento | date: 'dd/MM/yyyy'}}</h4>
                 <h4>Sexo: {{user.sexo}}</h4>
             </div>
             <div class="infoUser dataUpdate" id="dataUpdate" hidden>
@@ -21,7 +21,10 @@
                 <div style="display: flex; margin: 10px; align-items: center;"><h5>@</h5><input type="text" class="form-control" [(ngModel)]="user.nick"></div>
                 <hr>
                 <h4>Correo: </h4><input type="email" class="form-control" [(ngModel)]="user.correo_electronico">
-                <h4>Fecha de nacimiento: </h4><input type="datetime" class="form-control" [(ngModel)]="user.fecha_nacimiento">
+                <h4>Fecha de nacimiento: </h4>
+                <div class="col-md-6">
+                  <input type="date" class="form-control" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="this.user.fecha_nacimiento" value="2018-07-22" min="2018-01-01" max="2080-12-31" required="">
+                </div>
                 <h4>Sexo: </h4>
                 <select class="form-select" name="" id="" [(ngModel)]="user.sexo">
                     <option value="Hombre">Maculino</option>

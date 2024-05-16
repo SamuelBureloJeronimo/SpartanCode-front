@@ -3,8 +3,10 @@ import { tokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 import { userService } from 'src/app/services/user.service';
 import { global } from 'src/app/services/global';
-
+import { SalesService } from 'src/app/services/sales.service';
 import { AddressModel } from 'src/app/models/address';
+import { CartService } from 'src/app/services/cart.service';
+
 import Swal from 'sweetalert2';
 
 
@@ -17,7 +19,7 @@ export class ShoppingComponent implements OnInit{
   public cart: any[];
   public payment: any;
   public addressP: AddressModel;
-  public url: string; 
+  public url: string;
   public idUser: string;
   public precioTotal: number;
   public precioTotalFormated: string;
@@ -25,7 +27,8 @@ export class ShoppingComponent implements OnInit{
 
   public tabNumber: number = 0;
 
-  constructor(private tokenService: tokenService, private router: Router, private userService: userService)
+  constructor(private tokenService: tokenService, private router: Router, private cartService:CartService,
+              private userService: userService, private salesService: SalesService)
   {
     this.disableContinue = true;
     this.payment = {
@@ -73,7 +76,7 @@ export class ShoppingComponent implements OnInit{
     for (let index = 0; index < this.cart.length; index++)
     {
       this.precioTotal += this.cart[index].product.precio*this.cart[index].cantidad;
-    }    
+    }
   }
   public verificCardNumber() {
     // Eliminamos todos los espacios en blanco del número actual
@@ -130,7 +133,30 @@ export class ShoppingComponent implements OnInit{
     this.payment.expirationData = grupos ? grupos.join('/') : '';
     this.enableContinue();
   }
-  confirmShop(){
-    console.log(this.payment);
+  async confirmShop(){
+    let formData = {
+      user: this.idUser,
+      articulo: "64644dfa3fec0f37abb25322",
+      cantidad: 2
+    }
+
+    for (let i = 0; i < this.cart.length; i++) {
+      const element = this.cart[i];
+      let formData = {
+        user: this.idUser,
+        articulo: element.product._id,
+        cantidad: element.cantidad
+      }
+      let res = await this.salesService.create(formData).toPromise();
+      let res1 = await this.cartService.deleteItemOfCart(this.idUser, { "productId": element.product._id }).toPromise();
+
+      console.log(res);
+    }
+    await Swal.fire({
+      icon: 'success',
+      title: '¡Compra confirmada!',
+      text: 'Gracias por tu preferencia, pronto tendras tu producto en casa'
+    }).then(()=>{this.router.navigate(["/"]);});
+
   }
 }
