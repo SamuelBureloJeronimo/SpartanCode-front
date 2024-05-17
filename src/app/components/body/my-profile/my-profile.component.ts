@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { global } from 'src/app/services/global';
 import { tokenService } from 'src/app/services/token.service';
 import { userService } from 'src/app/services/user.service';
-import { User } from 'src/app/models/user';
+import { UserModel } from 'src/app/models/user';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,13 +13,13 @@ import Swal from 'sweetalert2';
 })
 
 export class myProfileComponent implements OnInit {
-    public user: User;
+    public user: UserModel;
     public url: string;
     public file: any;
 
     constructor(private tokenService: tokenService, private router: Router,
                 private userService: userService){
-        this.user = new User();
+        this.user = new UserModel();
         this.url = global.url;
     }
     async ngOnInit() {
@@ -68,7 +68,7 @@ export class myProfileComponent implements OnInit {
     }
     public async updateUser(){
         let formData = new FormData();
-    
+
         formData.set("nick",this.user.nick);
         formData.set("correo_electronico",this.user.correo_electronico);
         formData.set("nombre",this.user.nombre);
@@ -76,8 +76,8 @@ export class myProfileComponent implements OnInit {
         formData.set("fecha_nacimiento",this.user.fecha_nacimiento);
         formData.set("sexo",this.user.sexo);
         console.log(this.user.sexo);
-        
-        
+
+
         let res = await this.userService.updateUser(this.user._id, formData).toPromise();
         if(res.error){
             console.error(res.error);

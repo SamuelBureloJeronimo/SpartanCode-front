@@ -1,6 +1,6 @@
 import { Component,OnInit } from "@angular/core";
 import { userService } from "src/app/services/user.service";
-import { User } from "src/app/models/user";
+import { UserModel } from "src/app/models/user";
 import Swal from 'sweetalert2';
 import { global } from "src/app/services/global";
 import { tokenService } from "src/app/services/token.service";
@@ -31,9 +31,9 @@ export class createAccountComponent {
 
     public isExist:boolean;
 
-    public user:User;
+    public user:UserModel;
     private file:any;
-    
+
     constructor(private _userService:userService, private tokenService: tokenService, private router:Router){
         this.title = 'Registrate'
         this.labelnick = 'Nick';
@@ -51,7 +51,7 @@ export class createAccountComponent {
 
         this.url = global.url;
 
-        this.user = new User();
+        this.user = new UserModel();
     }
 
     public setTitle(title:string):void{
@@ -102,7 +102,7 @@ export class createAccountComponent {
         return this.labelImagen;
     }
 
-    
+
     public setFechaN(fechaN:string):void{
         this.labelFechaN = fechaN;
     }
@@ -141,7 +141,7 @@ export class createAccountComponent {
     }
 
     public onSubmit(form:any){
-        
+
         let formData = new FormData();
         let getImage = this.file;
         this.user.imagen = getImage;

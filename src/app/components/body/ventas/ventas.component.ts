@@ -1,8 +1,8 @@
 import { global } from 'src/app/services/global';
 import { SalesService } from 'src/app/services/sales.service';
 import { Component, OnInit } from '@angular/core';
-import { jsPDF } from "jspdf";
-import html2canvas from 'html2canvas';
+import { saleModel } from 'src/app/models/sale';
+import { PdfService } from 'src/app/services/pdf.service';
 
 @Component({
   selector: 'app-ventas',
@@ -11,34 +11,23 @@ import html2canvas from 'html2canvas';
 })
 export class VentasComponent implements OnInit {
   sales: any;
+  protected sale: saleModel = new saleModel();
   url: string;
 
-  constructor(private salesService: SalesService){
+  constructor(private salesService: SalesService, private pdfService: PdfService){
 
     this.url = global.url+"api/";
 
   }
   async ngOnInit() {
     let res = await this.salesService.getSales().toPromise();
-    console.log(res);
     this.sales = res;
   }
-  generatePDF(sale: any) {
-    const data = document.getElementById('contentToConvert');
-    if(data != null){
-      html2canvas(data).then(canvas => {
-        const imgWidth = 208;
-        const pageHeight = 295;
-        const imgHeight = canvas.height * imgWidth / canvas.width;
-        const heightLeft = imgHeight;
+  async generatePDF(sale: saleModel) {
+    this.sale = sale;
+    console.log(sale);
 
-        const contentDataURL = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF
-        const position = 0;
-        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-        pdf.save('GeneratedPDF.pdf');
-      });
-    }
+    this.pdfService.generatePdf("contentToConvert", "ejemplo.pdf");
   }
 
 }

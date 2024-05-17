@@ -1,4 +1,4 @@
-<div class="bodyStyle">
+<div class="bodyStyle" id="TableID">
   <h1 style="margin: 10px; font-weight: bold;">Ordenes de ventas</h1>
   <div class="bodyModal">
   <table class="table table-hover text-center">
@@ -29,11 +29,57 @@
 </div>
 </div>
 
-<div class="container mt-5">
-  <div #content id="contentToConvert" class="p-3 mb-3" style="background: #f5f5f5; border: 1px solid #ccc;">
-    <h1>Title</h1>
-    <p>This is a paragraph of text that will be converted to PDF.</p>
-    <p>More content can go here...</p>
-    <!-- Puedes agregar más contenido HTML aquí -->
+<div hidden>
+  <div id="contentToConvert" class="p-3 mb-3">
+    <div class="headerEtiq">
+      <div>
+        <img class="logo" src="../../../../assets/Logo.png" width="50px">
+      </div>
+      <div style="margin-left: 20px;">
+        <h1 style="font-weight: bold; color: rgb(255, 100, 23);">VisionSoft</h1>
+      </div>
+    </div>
+
+    <div class="bodyEtiq">
+      <div class="bodySectionEtiq">
+        DE: VisionSoft<br> <br>
+        Macuspana, Tabasco. <br>
+        Código postal: 86709 <br>
+        Col. Josefa Órtiz de Domínguez. <br>
+        Calle: José Antonio Torres
+        <div style="display: flex; justify-content: center;">
+          <img src="../../../../assets/img/caja-de-entrega.png" width="60px">
+        </div>
+        </div>
+      <div class="correoEtiq">
+        <div class="nombreEtiq">
+          <h1>DHL Express</h1>
+        </div>
+        <div class="descEtiq">
+          Destino: {{this.sale.address.municipio}}, {{this.sale.address.estado}}. <br>
+          Entregar a: {{this.sale.address.nombreRef}} <br> <br>
+          Colonia: {{this.sale.address.colonia}}, calle{{this.sale.address.calle}} <br>
+          Código postal: {{this.sale.address.cp}} <br><br>
+          Descripción de domicilio: {{this.sale.address.descripcionDomicilio}}
+        </div>
+      </div>
+    </div>
+
+    <div class="footerEtiq">
+      <div class="footerSectionEtiq">
+        <div class="fragilEtiq">
+          <img src="../../../../assets/fragil.jpg" width="250px">
+        </div>
+        <div class="fragilEtiq">
+          1212121212121212121
+        </div>
+      </div>
+
+      <div class="QR_Bar">
+        <img src="../../../../assets/QR_prueba.jpg" width="150px">
+      </div>
+
+    </div>
+
   </div>
 </div>

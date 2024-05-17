@@ -134,16 +134,11 @@ export class ShoppingComponent implements OnInit{
     this.enableContinue();
   }
   async confirmShop(){
-    let formData = {
-      user: this.idUser,
-      articulo: "64644dfa3fec0f37abb25322",
-      cantidad: 2
-    }
-
     for (let i = 0; i < this.cart.length; i++) {
       const element = this.cart[i];
       let formData = {
         user: this.idUser,
+        address: this.addressP,
         articulo: element.product._id,
         cantidad: element.cantidad
       }

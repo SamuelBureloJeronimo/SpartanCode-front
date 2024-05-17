@@ -1,4 +1,4 @@
-export class User{
+export class UserModel {
     public _id:string;
     public nick:string;
     public correo_electronico:string;
