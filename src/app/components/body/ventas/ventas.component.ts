@@ -1,6 +1,6 @@
 import { global } from 'src/app/services/global';
 import { SalesService } from 'src/app/services/sales.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { saleModel } from 'src/app/models/sale';
 import { PdfService } from 'src/app/services/pdf.service';
 
@@ -13,8 +13,10 @@ export class VentasComponent implements OnInit {
   sales: any;
   protected sale: saleModel = new saleModel();
   url: string;
+  private isViewChecked: boolean = false;
 
-  constructor(private salesService: SalesService, private pdfService: PdfService){
+  constructor(private salesService: SalesService, private pdfService: PdfService,
+    private cdr: ChangeDetectorRef){
 
     this.url = global.url+"api/";
 
@@ -23,11 +25,23 @@ export class VentasComponent implements OnInit {
     let res = await this.salesService.getSales().toPromise();
     this.sales = res;
   }
-  async generatePDF(sale: saleModel) {
+  generatePDF(sale: saleModel){
     this.sale = sale;
-    console.log(sale);
+    // Marcar la vista como no comprobada
+    this.isViewChecked = false;
+    // Forzar la detección de cambios
+    this.cdr.detectChanges();
+    if (!this.isViewChecked && this.sale) {
+      this.isViewChecked = true;
+      this.pdfService.generatePdf('contentToConvert', 'ejemplo.pdf');
+    }
+  }
 
-    this.pdfService.generatePdf("contentToConvert", "ejemplo.pdf");
+  async changeStatus(idSale:any ,estado: string){
+    let res = await this.salesService.changeStatus(idSale._id, {status: estado}).toPromise();
+    console.log(res);
+    idSale.status = estado;
+
   }
 
 }

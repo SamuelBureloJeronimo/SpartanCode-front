@@ -27,6 +27,7 @@ export class HeaderComponent
     public isHiddenDefault: Boolean;
     public isHiddenSH: Boolean;
     public isUser: Boolean;
+    protected idUser:string = "";
     @ViewChild('myButton') myButton: any;
     public hiddenCPalert: Boolean;
     public cp: number;
@@ -65,6 +66,9 @@ export class HeaderComponent
             console.log(tokenDecoded.error);
             return;
         }
+        console.log(tokenDecoded);
+        this.idUser = tokenDecoded.datosToken.id;
+
 
         // --- ---
         this.dataToken = tokenDecoded.datosToken;
@@ -78,10 +82,10 @@ export class HeaderComponent
         let user = await this._login.getUser(this.dataToken.id).toPromise();
         if(user.error)
             return;
-            
+
         this.userAddresses = user.addresses;
         this.carr = user.carrito;
-        
+
     }
     addNewAddress(){
         this.hiddenCPalert = false;
@@ -97,7 +101,7 @@ export class HeaderComponent
                 const places = res.data.places;
                 for(let i=0; i<places.length;i++){
                     let place = places[i];
-                    colonias.push({ 
+                    colonias.push({
                         value: place['place name'],
                         label: place['place name']
                     });
@@ -107,13 +111,13 @@ export class HeaderComponent
                     (res) => {
                         const mun = res.data;
                         for(let i=0; i<mun.length;i++){
-                            municipios.push({ 
+                            municipios.push({
                                 value: mun[i].Municipio,
                                 label: mun[i].Municipio
                             });
                         }
                         const pack = [State, municipios, colonias, this.cp];
-                        
+
                         const objetoJson = JSON.stringify(pack);
                         const objetoParametro = encodeURIComponent(objetoJson);
                         this.router.navigate(['/register-address', objetoParametro]);
@@ -150,11 +154,11 @@ export class HeaderComponent
             return console.log("ERROR!!", products.error);
         // --- ---
         this.data = products.searchFinal;
-        
+
     }
 
     public noneDisplay(product: any):void{
         this.isHiddenSH = true;
-        this.router.navigate(['/product-detail/'+product._id]);        
+        this.router.navigate(['/product-detail/'+product._id]);
     }
 }

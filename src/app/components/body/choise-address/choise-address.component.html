@@ -1,0 +1,25 @@
+<div class="bodyStyle">
+  <h3 style="font-weight: bold;">Elige tu dirección de entrega</h3>
+  <div class="row bodyP">
+
+    <div class="form-check" *ngFor="let comp of this.address">
+
+        <input class="form-check-input" type="radio" (change)="onRadioChange($event)" [(ngModel)]="selectedAdd" value="{{comp._id}}">
+
+        <label class="form-check-label cpClass" *ngIf="defaultAdd === comp._id">
+          CP {{comp.cp}} (Default)
+        </label>
+        <label class="form-check-label cpClass" *ngIf="defaultAdd !== comp._id">
+          CP {{comp.cp}}
+        </label>
+        <label>
+          Calle {{comp.calle}} {{comp.nExterior}} - {{comp.nInterior}} - {{comp.municipio}}, {{comp.estado}} <br>
+          {{comp.nombreRef}} - {{comp.Tel}}
+        </label>
+        <hr>
+
+    </div>
+    <button [hidden]="isHidden" (click)="changeAddress()">Cambiar</button>
+  </div>
+</div>
+|

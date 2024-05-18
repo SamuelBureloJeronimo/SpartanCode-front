@@ -30,6 +30,7 @@ import { CartComponent } from './components/body/cart/cart.component';
 import { ShoppingComponent } from './components/body/shopping/shopping.component';
 import { SalesComponent } from './components/body/sales/sales.component';
 import { VentasComponent } from './components/body/ventas/ventas.component';
+import { ChoiseAddressComponent } from './components/body/choise-address/choise-address.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { VentasComponent } from './components/body/ventas/ventas.component';
     CartComponent,
     ShoppingComponent,
     SalesComponent,
-    VentasComponent
+    VentasComponent,
+    ChoiseAddressComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AddressModel } from 'src/app/models/address';
 import { ActivatedRoute, Router } from '@angular/router';
-import { addressService } from 'src/app/services/address.service';
+import { AddressService } from 'src/app/services/address.service';
 import { tokenService } from 'src/app/services/token.service';
 import { userService } from 'src/app/services/user.service';
 
@@ -13,7 +13,7 @@ import { userService } from 'src/app/services/user.service';
 
 export class registerAddressComponent {
     public isHiddenSeeMore: Boolean;
-    
+
     public municipiosArray: any;
     public ColoniasArray: any;
     public idUser:string;
@@ -21,10 +21,10 @@ export class registerAddressComponent {
     public token: any;
 
     public addressData: AddressModel;
-    
-    
+
+
     constructor(private tokenService: tokenService,private _route: ActivatedRoute,
-                private router: Router, private _addressService: addressService,
+                private router: Router, private _addressService: AddressService,
                 private userService:userService){
         this.idUser = ""
         this.isHiddenSeeMore = true;

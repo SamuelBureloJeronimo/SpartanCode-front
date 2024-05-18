@@ -12,7 +12,7 @@
         </div>
         <div style="display: flex; padding: 15px;">
             <div style="width: 100%;  justify-content: left;">
-                <button class="btn btn-info">Cambiar direccion</button>
+                <button class="btn btn-info" [routerLink]="['/choise-address', {change: idUser}]">Cambiar direccion</button>
             </div>
             <div style="display: flex; width: 100%;  justify-content: right;">
                 <button class="btn btn-primary" (click)="continue(1)">Continuar</button>

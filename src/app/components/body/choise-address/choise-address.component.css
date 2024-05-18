@@ -1,0 +1,9 @@
+.bodyP {
+  width: 500px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 15px;
+}
+.cpClass {
+  font-weight: bold;
+}

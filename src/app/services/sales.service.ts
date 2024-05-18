@@ -19,8 +19,8 @@ export class SalesService {
   public getSales(): Observable<any>{
     return this.http.get<any>(this.url+'api/get-sales');
   }
-  public changeStatus(idSale: string): Observable<any>{
-    return this.http.put<any>(this.url+'api/update-sale/'+idSale, "");
+  public changeStatus(idSale: string, formData: any): Observable<any>{
+    return this.http.put<any>(this.url+'api/update-sale/'+idSale, formData);
   }
   public getSalesById(idUser: string): Observable<any>{
     return this.http.get<any>(this.url+'api/get-saleByUser/'+idUser);

@@ -1,12 +1,15 @@
 .container {
     display: flex;
     justify-content: center;
-    width: 1220px;
+    width: 100%;
     padding: 35px;
     border: 2px solid rgb(215, 215, 215);
     background-color: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Definición del sombreado */
     overflow: hidden;
+}
+.bodyStyle {
+  height: 100%;
 }
 
 .divEdith {
@@ -42,7 +45,7 @@
 }
 .taDescrip {
     width: 100%;
-    height: 500px;
+    height: 450px;
 }
 
 .contentRight {

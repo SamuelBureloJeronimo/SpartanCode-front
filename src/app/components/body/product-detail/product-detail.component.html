@@ -64,15 +64,15 @@
                     <div>
                         <h3 [style]="{'font-size':'15px'}">Stock disponible</h3>
                         <p>Cantidad: {{ this.product.cantidad }} unidad</p>
-                        <button class="btnDesing comprarNow">Comprar Ahora</button><br>
-                        <button class="btnDesing addCarr" (click)="addCarr()">Agregar al carrito</button>
+                        <button class="btnDesing addCarr" style="background-color: rgb(27, 204, 0);" (click)="addCarr()" *ngIf="product.cantidad > 0">Agregar al carrito</button>
+                        <button class="btnDesing addCarr" (click)="addCarr()" *ngIf="product.cantidad <= 0" disabled>Sin stock</button>
                         <p><span [style]="{'color':'#0063d3'}"> Devolución gratis.</span><span [style]="{'color':'gray'}"> 30 días desde que lo recibes.</span></p>
                         <p><span [style]="{'color':'#0063d3'}"> Compra Protegida,</span><span [style]="{'color':'gray'}"> el producto que esperabas o te devolvemos tu dinero.</span></p>
                         <p><span [style]="{'color':'#0063d3'}">Mercado Puntos.</span><span [style]="{'color':'gray'}"> Sumas 262 puntos</span></p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="paymentsMethods">
                 <h2 [style]="{'font-size':'20px'}" class="text-center">Medios de Pago</h2>
                 <h2 [style]="{'font-size':'15px'}" class="text-center">Tarjetas de crédito</h2>

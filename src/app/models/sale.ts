@@ -11,4 +11,5 @@ export class saleModel {
   public cantidad:number = 0;
   public total:number = 0;
   public status:Boolean = false;
+  public noDeGuia:string = "";
 }

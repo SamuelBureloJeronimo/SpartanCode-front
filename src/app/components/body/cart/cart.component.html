@@ -1,7 +1,8 @@
 <div class="bodyStyle">
     <div class="bodyP">
         <h5>Productos</h5><hr>
-        <table class="table table-hover">
+        <h5 style="color: rgb(144, 144, 144); font-weight: lighter; text-align: center; margin: 80px;" *ngIf="carrito.length === 0">Muy vacío por aqui, agrega productos.</h5>
+        <table class="table table-hover" *ngIf="carrito.length > 0">
             <tbody>
                 <tr class="rowCart" *ngFor="let cart of carrito">
                     <td class="align-middle"><div class='imgC'><div class='img-container'><img src="{{this.url+'api/'+cart.product.imagen}}" alt='Imagen de producto'></div></div></td>
@@ -19,7 +20,7 @@
             </tbody>
         </table>
     </div>
-    <div class="bodyP resumen">
+    <div class="bodyP resumen" *ngIf="carrito.length > 0">
         <h6>Resumen de compra</h6>
         <hr>
         <div style="display: flex; align-items: center; padding: 5px;">

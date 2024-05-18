@@ -61,7 +61,7 @@ export class SalesComponent implements OnInit{
         console.log("*Se cancelo la acción*");
         return;
       }
-      let res = await this.salesService.changeStatus(idSale).toPromise();
+      let res = await this.salesService.changeStatus(idSale, {status: "Entregado y Confirmado"}).toPromise();
       console.log(res);
 
       Swal.fire({

@@ -20,8 +20,19 @@
         <td class="normalTD">{{ c.articulo.nombre }}</td>
         <td class="normalTD">{{ c.cantidad }}</td>
         <td class="peso">{{ c.total | currency:'MXN':'symbol':'1.2-2'}}</td>
-        <td class="enEspera" *ngIf="c.status == false">En espera de entrega</td>
-        <td class="entregado" *ngIf="c.status == true">Entregado</td>
+        <td class="enEspera">
+          <div class="btn-group" style="width: 100%;" *ngIf="c.status !== 'Entregado y Confirmado'">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            {{c.status}}
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="changeStatus(c,'En preparacion')">En preparación</a></li>
+            <li><a class="dropdown-item" (click)="changeStatus(c,'En camino')">En camino</a></li>
+            <li><a class="dropdown-item" (click)="changeStatus(c,'Entregado')">Entregado</a></li>
+          </ul>
+        </div>
+        <div *ngIf="c.status === 'Entregado y Confirmado'">El cliente confirmo la entrega</div>
+      </td>
         <td class="normalTD"><button type="button" class="btn btn-info" (click)="generatePDF(c)">Descargar etiqueta</button></td>
       </tr>
     </tbody>
@@ -29,8 +40,8 @@
 </div>
 </div>
 
-<div hidden>
-  <div id="contentToConvert" class="p-3 mb-3">
+<div style="width: 800px;" hidden>
+  <div id="contentToConvert" class="p-3 mb-3" style="width: 800px;">
     <div class="headerEtiq">
       <div>
         <img class="logo" src="../../../../assets/Logo.png" width="50px">
@@ -58,7 +69,7 @@
         <div class="descEtiq">
           Destino: {{this.sale.address.municipio}}, {{this.sale.address.estado}}. <br>
           Entregar a: {{this.sale.address.nombreRef}} <br> <br>
-          Colonia: {{this.sale.address.colonia}}, calle{{this.sale.address.calle}} <br>
+          Colonia: {{this.sale.address.colonia}}, calle {{this.sale.address.calle}} <br>
           Código postal: {{this.sale.address.cp}} <br><br>
           Descripción de domicilio: {{this.sale.address.descripcionDomicilio}}
         </div>
@@ -71,7 +82,7 @@
           <img src="../../../../assets/fragil.jpg" width="250px">
         </div>
         <div class="fragilEtiq">
-          1212121212121212121
+          {{sale.noDeGuia}}
         </div>
       </div>
 
@@ -80,6 +91,26 @@
       </div>
 
     </div>
+
+    <div class="headerEtiq" style="margin-top: 30px; border: none;">
+      <h4 style="font-weight: bold;">Detalles del producto</h4>
+    </div>
+    <table class="table" style="margin-top: 5px;">
+      <thead>
+        <tr>
+          <th scope="col">Imagen</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><img src="{{this.url+sale.articulo.imagen}}" width="50px"></th>
+          <td>{{sale.articulo.nombre}}</td>
+          <td>{{sale.total | currency:'MXN':'symbol':'1.2-2'}}</td>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
 </div>

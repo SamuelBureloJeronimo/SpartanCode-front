@@ -17,6 +17,7 @@ import { CartComponent } from '../components/body/cart/cart.component';
 import { ShoppingComponent } from '../components/body/shopping/shopping.component';
 import { SalesComponent } from '../components/body/sales/sales.component';
 import { VentasComponent } from '../components/body/ventas/ventas.component';
+import { ChoiseAddressComponent } from '../components/body/choise-address/choise-address.component';
 
 const routes: Routes = [
   { path: 'home', component: ProductComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'sales',component: SalesComponent },
   { path: 'gestion-ventas',component: VentasComponent },
   { path: 'shopping-transaction',component: ShoppingComponent },
+  { path: 'choise-address', component: ChoiseAddressComponent },
   { path: '**', component: ProductComponent }
 ];
 
