@@ -1,22 +1,22 @@
 <div class="bodyStyle">
-  <div class="articulos" *ngFor="let i of compras">
-    <div class="bodyP">
-      <h5>{{i.fecha | date: 'dd/MM/yyyy'}}</h5><hr>
-      <table class="table table-hover">
-          <tbody>
-              <tr class="rowCart">
-                  <td class=""><div class='imgC'><div class='img-container'><img src="{{this.url+i.articulo.imagen}}" width="80px" alt='Imagen de producto'></div></div></td>
-                  <td class="fixed-width"><a class="aLink" [routerLink]="['/product-detail/'+i.articulo._id]">{{i.articulo.nombre}}</a></td>
-                  <td class="EnEspera">
-                    {{i.status}}
-                  </td>
-                  <td *ngIf="i.status === 'En preparacion'"><button type="button" class="btn btn-secondary" disabled>En preparación</button></td>
-                  <td *ngIf="i.status === 'En camino'"><button type="button" class="btn btn-secondary" disabled>En camino</button></td>
-                  <td *ngIf="i.status === 'Entregado'"><button type="button" class="btn btn-info" (click)="confirmarEntrega(i._id)">Confirmar entrega</button></td>
-                  <td *ngIf="i.status === 'Entregado y Confirmado'"><button type="button" class="btn btn-secondary" disabled>Entrega confirmada</button></td>
-                </tr>
-          </tbody>
-      </table>
+    <div class="articulos" *ngFor="let i of compras">
+      <div class="bodyP">
+        <h5>{{i.fecha | date: 'dd/MM/yyyy'}}</h5><hr>
+        <table class="table table-hover">
+            <tbody>
+                <tr class="rowCart">
+                    <td class=""><div class='imgC'><div class='img-container'><img src="{{this.url+i.articulo.imagen}}" width="80px" alt='Imagen de producto'></div></div></td>
+                    <td class="fixed-width"><a class="aLink" [routerLink]="['/product-detail/'+i.articulo._id]">{{i.articulo.nombre}}</a></td>
+                    <td class="EnEspera">
+                      {{i.status}}
+                    </td>
+                    <td *ngIf="i.status === 'En preparacion'"><button type="button" class="btn btn-secondary" disabled>En preparación</button></td>
+                    <td *ngIf="i.status === 'En camino'"><button type="button" class="btn btn-secondary" disabled>En camino</button></td>
+                    <td *ngIf="i.status === 'Entregado'"><button type="button" class="btn btn-info" (click)="confirmarEntrega(i._id)">Confirmar entrega</button></td>
+                    <td *ngIf="i.status === 'Entregado y Confirmado'"><button type="button" class="btn btn-secondary" disabled>Entrega confirmada</button></td>
+                  </tr>
+            </tbody>
+        </table>
+      </div>
     </div>
-  </div>
 </div>

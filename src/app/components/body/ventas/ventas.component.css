@@ -45,6 +45,10 @@
   width: 30%;
   border: 3px solid rgb(0, 0, 0);
 }
+.bodyStyle {
+  flex-direction: row;
+  height: max-content;
+}
 .correoEtiq {
   width: 70%;
   border: 3px solid rgb(0, 0, 0);
